@@ -1,0 +1,54 @@
+<html ng-app="sample">
+   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="empjs.js"></script>
+    </head>
+    
+       <body ng-controller="myctrl">
+        <label>Chose no of rows</label> <input type="number" step="1" min="0" max="6" ng-model="limit"><br>
+        <table class="table">
+            <tr>
+                <th>ID
+                    <br>
+                    <input type="text" ng-model="search.ID" placeholder="Search for ID">
+                </th>
+                <th>Name
+                    <br>
+                    <input type="text" ng-model="search.Name" placeholder="Search for Name">
+                </th>
+                    <th>Age
+                    <br>
+                    <input type="text" ng-model="search.Age" placeholder="Search for Age">
+                </th>
+                <th>Station
+                    <br>
+                    <input type="text" ng-model="search.Station" placeholder="Search for Station">
+                </th>
+                <th>Phone
+                    <br>
+                    <input type="text" ng-model="search.Phone" placeholder="Search for phone">
+                </th>
+                <th>Salary
+                    <br>
+                    <input type="text" ng-model="search.Salary" placeholder="Search for Salary">
+                </th>
+                <th>
+                    Status
+                </th>
+            </tr>
+            <tr ng-repeat="item in entry|filter:search|orderBy:'ID' | limitTo:limit">
+                <td>{{item.ID}}</td>
+                <td>{{item.Name|uppercase}}</td>
+                <td>{{item.Age}}</td>
+                <td>{{item.Station|lowercase}}</td>
+                <td>{{item.Phone}}</td>
+                <td>{{item.Salary|currency : "Rs "}}</td>
+                <td>{{item.Age|Age}}</td>
+            </tr>
+        </table>
+        <br>
+        <br>
+        <br>
+       
+       </body> 
+</html>
